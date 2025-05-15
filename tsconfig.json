@@ -1,6 +1,5 @@
-
 {
-  "compilerOptions":{
+  "compilerOptions": {
     "target": "ESNext",
     "module": "CommonJS",
     //estoy estableciendo src como ruta absoluta para ahorrame luego en rallada de rutas
@@ -8,10 +7,10 @@
     "outDir": "./dist",
     "rootDir": "./",
     "esModuleInterop": true,
-    "moduleResolution": "node",
+    "moduleResolution": "node"
   },
   "include": ["src", "tests"],
-  "exclude": ["dist"],
+  "exclude": ["dist"]
 }
 
 // {
@@ -127,4 +126,3 @@
 //     "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
 //   }
 // }
-
