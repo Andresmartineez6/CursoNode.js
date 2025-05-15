@@ -40,4 +40,5 @@ describe("DeleteEmployee Use Case", () => {
     // Intentar eliminar un empleado que no existe
     await expect(deleteEmployee.execute("non-existent-id")).rejects.toThrow("User not found");
   });
+  
 });

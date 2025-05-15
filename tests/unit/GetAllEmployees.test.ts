@@ -53,6 +53,7 @@ describe("GetAllEmployees Use Case", () => {
     const employees = await getAllEmployees.execute();
     
     // Verificar que se devuelve un array vacío
+    //El toEqual() sirve para tipos de datos mas complejos como arrays
     expect(employees).toEqual([]);
     expect(employees.length).toBe(0);
   });

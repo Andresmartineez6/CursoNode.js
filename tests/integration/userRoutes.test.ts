@@ -11,6 +11,8 @@ const app = express();
 app.use(express.json());
 app.use('/employee',router)
 
+
+
 describe('User routes', async () => {
     // Crear un empleado para usar en todos los tests
     const createRes = await request(app).post('/employee').send({
@@ -24,6 +26,8 @@ describe('User routes', async () => {
     });
     const employeeId = createRes.body.id;
 
+
+
     it('POST /employee should create a user', async() => {
         // Verificar la respuesta de creación
         expect(createRes.status).toBe(201);
@@ -35,6 +39,8 @@ describe('User routes', async () => {
         expect(createRes.body.team).toBe('team4');
         expect(createRes.body.yearsOfService).toBe(4);
     });
+
+
 
     it('GET /employee should get all employees', async() => {
         const res = await request(app).get('/employee');
@@ -51,6 +57,8 @@ describe('User routes', async () => {
         );
     });
 
+
+
     it('GET /employee/:id should get a specific employee', async() => {
         // Buscar por el ID creado
         const res = await request(app).get(`/employee/${employeeId}`);
@@ -62,6 +70,8 @@ describe('User routes', async () => {
             position: "junior"
         });
     });
+
+
 
     it('PUT /employee/:id should update an employee', async() => {
         // Actualizar el empleado
@@ -79,6 +89,8 @@ describe('User routes', async () => {
         expect(getRes.body.position).toBe("senior");
         expect(getRes.body.salary).toBe(3500);
     });
+
+
 
     it('GET /employee/filter should filter employees by name', async() => {
         // Crear otro empleado para probar el filtrado
@@ -99,6 +111,8 @@ describe('User routes', async () => {
         expect(res.body[0].name).toBe("Ana");
     });
 
+
+
     it('GET /employee/filter should filter employees by position', async() => {
         // Filtrar por posición
         const res = await request(app).get('/employee/filter?position=senior');
@@ -106,6 +120,8 @@ describe('User routes', async () => {
         expect(res.body.length).toBeGreaterThanOrEqual(1);
         expect(res.body[0].position).toBe("senior");
     });
+
+
 
     it('DELETE /employee/:id should delete an employee', async() => {
         // Crear un empleado para eliminar
@@ -129,4 +145,6 @@ describe('User routes', async () => {
         const getRes = await request(app).get(`/employee/${tempEmployeeId}`);
         expect(getRes.status).toBe(404);
     });
+
+    
 });

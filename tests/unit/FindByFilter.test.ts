@@ -6,6 +6,9 @@ describe("FindByFilter Use Case", () => {
   let repo: InMemoryUserRepo;
   let findByFilter: FindByFilter;
 
+
+
+  //antes de cada test ejecutame esto:
   beforeEach(async () => {
     repo = new InMemoryUserRepo();
     findByFilter = new FindByFilter(repo);
@@ -49,6 +52,8 @@ describe("FindByFilter Use Case", () => {
     await repo.create(employee3);
   });
   
+
+
   it("should find employees by name filter", async () => {
     // Filtrar por nombre
     const employees = await findByFilter.execute({ name: "Ana" });
@@ -59,6 +64,8 @@ describe("FindByFilter Use Case", () => {
     expect(employees[0].getName()).toBe("Ana");
   });
   
+
+
   it("should find employees by position filter", async () => {
     // Filtrar por posición
     const employees = await findByFilter.execute({ position: "junior" });
@@ -69,6 +76,8 @@ describe("FindByFilter Use Case", () => {
     expect(employees[1].getPosition()).toBe("junior");
   });
   
+
+
   it("should find employees by name and position filter", async () => {
     // Filtrar por nombre y posición
     const employees = await findByFilter.execute({ name: "Manolo", position: "junior" });
@@ -80,6 +89,8 @@ describe("FindByFilter Use Case", () => {
     expect(employees[0].getPosition()).toBe("junior");
   });
   
+
+
   it("should return all employees when no filter is provided", async () => {
     // No proporcionar filtro
     const employees = await findByFilter.execute({});
@@ -88,6 +99,8 @@ describe("FindByFilter Use Case", () => {
     expect(employees.length).toBe(3);
   });
   
+
+
   it("should return empty array when no employees match the filter", async () => {
     // Proporcionar un filtro que no coincide con ningún empleado
     const employees = await findByFilter.execute({ name: "Inexistente" });
@@ -95,4 +108,6 @@ describe("FindByFilter Use Case", () => {
     // Verificar que se devuelve un array vacío
     expect(employees.length).toBe(0);
   });
+
+  
 });
