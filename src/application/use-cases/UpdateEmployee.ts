@@ -9,7 +9,7 @@ export class UpdateEmployee {
     async execute(id: string, position: "junior" | "senior" | "teamLeader" | "ceo", salary: number ){
         
         const employee = await this.employeeRepository.findById(id);
-        if(!Employee) throw new Error(" User not found");
+        if(!employee) throw new Error("User not found");
     
         employee.changeSalary(salary);
         employee.changePosition(position);

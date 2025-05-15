@@ -58,8 +58,8 @@ export class EmployeeController {
     update= async (req: Request, res: Response)=>{
         try{
            const { id } = req.params;
-           const {name, email} = req.body;
-           const employee = await this.UpdateEmployee.execute(id,name,email);
+           const { position, salary } = req.body;
+           const employee = await this.UpdateEmployee.execute(id, position, salary);
            res.status(200).json(employee);
 
         }catch (err: any){
