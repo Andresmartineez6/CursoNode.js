@@ -8,6 +8,8 @@ import { GetAllEmployees } from 'application/use-cases/GetAllEmployees';
 import { GetEmployee } from 'application/use-cases/GetEmployee';
 import { UpdateEmployee } from 'application/use-cases/UpdateEmployee';
 import { FindByFilter } from 'application/use-cases/FindByFilter';
+import { SortEmployees, SortField, SortOrder } from 'application/use-cases/SortEmployees';
+import { PaginateEmployees } from 'application/use-cases/PaginateEmployees';
 
 export class EmployeeController {
   constructor(
@@ -17,6 +19,8 @@ export class EmployeeController {
     private readonly getEmployee: GetEmployee,
     private readonly UpdateEmployee: UpdateEmployee,
     private readonly findByFilter: FindByFilter,
+    private readonly sortEmployees: SortEmployees,
+    private readonly paginateEmployees: PaginateEmployees
   ) {}
 
   create = async (req: Request, res: Response) => {
@@ -90,12 +94,33 @@ export class EmployeeController {
 
   filter = async (req: Request, res: Response) => {
     try {
-      const filter: Partial<{
-        name: string;
-        position: 'junior' | 'senior' | 'teamLeader' | 'ceo';
-      }> = req.query;
+      const filter: Partial<{ name: string; position: "junior" | "senior" | "teamLeader" | "ceo" }> = req.query;
       const employee = await this.findByFilter.execute(filter);
       res.status(200).json(employee);
+    } catch (err: any) {
+      res.status(404).json({ error: err.message });
+    }
+  };
+
+  sort = async (req: Request, res: Response) => {
+    try {
+      const sortField = req.query.sortBy as SortField || 'name';
+      const sortOrder = req.query.order as SortOrder || 'asc';
+      
+      const employees = await this.sortEmployees.execute(sortField, sortOrder);
+      res.status(200).json(employees);
+    } catch (err: any) {
+      res.status(404).json({ error: err.message });
+    }
+  };
+
+  paginate = async (req: Request, res: Response) => {
+    try {
+      const pagina = parseInt(req.query.pagina as string) || 1;
+      const limite = parseInt(req.query.limite as string) || 10;
+      
+      const resultado = await this.paginateEmployees.execute(pagina, limite);
+      res.status(200).json(resultado);
     } catch (err: any) {
       res.status(404).json({ error: err.message });
     }

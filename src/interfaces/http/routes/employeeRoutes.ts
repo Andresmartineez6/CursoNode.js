@@ -9,6 +9,8 @@ import { GetEmployee } from 'application/use-cases/GetEmployee';
 import { GetAllEmployees } from 'application/use-cases/GetAllEmployees';
 import { UpdateEmployee } from 'application/use-cases/UpdateEmployee';
 import { FindByFilter } from 'application/use-cases/FindByFilter';
+import { SortEmployees } from 'application/use-cases/SortEmployees';
+import { PaginateEmployees } from 'application/use-cases/PaginateEmployees';
 
 import { EmployeeController } from '../controlers/EmployeeController';
 const router = Router();
@@ -22,10 +24,14 @@ const controller = new EmployeeController(
   new GetEmployee(repo),
   new UpdateEmployee(repo),
   new FindByFilter(repo),
+  new SortEmployees(repo),
+  new PaginateEmployees(repo)
 );
 
 //tienen que ir los casos de get de más específico a más general, porque si no como tengas el general arriba la query entra al primero que pille y le coincida y ya cagaste
 router.get('/filter', controller.filter);
+router.get('/sort', controller.sort);
+router.get('/paginate', controller.paginate);
 router.get('/:id', controller.get);
 router.get('/', controller.getAll);
 

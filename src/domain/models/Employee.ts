@@ -50,4 +50,16 @@ export class Employee {
   public getPosition(): string {
     return this.position;
   }
+
+  public getLastName(): string {
+    return this.lastName;
+  }
+
+  public getSalary(): number {
+    return this.salary;
+  }
+
+  public getYearsOfService(): number {
+    return this.yearsOfService;
+  }
 }
