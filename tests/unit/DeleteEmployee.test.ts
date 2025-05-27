@@ -1,6 +1,9 @@
-import { DeleteEmployee } from 'application/use-cases/DeleteEmployee';
-import { InMemoryUserRepo } from 'infrastructure/repositories/inMemoryUserRepo';
-import { Employee } from 'domain/models/Employee';
+import { DeleteEmployee } from 'context/crud/application/use-cases/DeleteEmployee';
+import { InMemoryUserRepo } from 'context/crud/infrastructure/repositories/inMemoryUserRepo';
+import { Employee } from 'context/crud/domain/models/Employee';
+
+
+
 
 describe('DeleteEmployee Use Case', () => {
   it('should delete an employee correctly', async () => {

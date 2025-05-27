@@ -1,6 +1,6 @@
-import { FindByFilter } from 'application/use-cases/FindByFilter';
-import { InMemoryUserRepo } from 'infrastructure/repositories/inMemoryUserRepo';
-import { Employee } from 'domain/models/Employee';
+import { FindByFilter } from 'context/crud/application/use-cases/FindByFilter';
+import { InMemoryUserRepo } from 'context/crud/infrastructure/repositories/inMemoryUserRepo';
+import { Employee } from 'context/crud/domain/models/Employee';
 
 describe('FindByFilter Use Case', () => {
   let repo: InMemoryUserRepo;

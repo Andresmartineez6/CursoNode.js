@@ -3,19 +3,19 @@ import { describe, it, expect, beforeEach } from 'vitest';
 import request from 'supertest';
 import express from 'express';
 import { Router } from 'express';
-import { Employee } from '../../src/domain/models/Employee';
-import { InMemoryUserRepo } from '../../src/infrastructure/repositories/inMemoryUserRepo';
+import { Employee } from 'context/crud/domain/models/Employee';
+import { InMemoryUserRepo } from 'context/crud/infrastructure/repositories/inMemoryUserRepo';
 
 // Importamos los casos de uso directamente
-import { CreateEmployee } from '../../src/application/use-cases/CreateEmployee';
-import { DeleteEmployee } from '../../src/application/use-cases/DeleteEmployee';
-import { GetEmployee } from '../../src/application/use-cases/GetEmployee';
-import { GetAllEmployees } from '../../src/application/use-cases/GetAllEmployees';
-import { UpdateEmployee } from '../../src/application/use-cases/UpdateEmployee';
-import { FindByFilter } from '../../src/application/use-cases/FindByFilter';
-import { SortEmployees } from '../../src/application/use-cases/SortEmployees';
-import { PaginateEmployees } from '../../src/application/use-cases/PaginateEmployees';
-import { EmployeeController } from '../../src/interfaces/http/controlers/EmployeeController';
+import { CreateEmployee } from 'context/crud//application/use-cases/CreateEmployee';
+import { DeleteEmployee } from 'context/crud/application/use-cases/DeleteEmployee';
+import { GetEmployee } from 'context/crud//application/use-cases/GetEmployee';
+import { GetAllEmployees } from 'context/crud/application/use-cases/GetAllEmployees';
+import { UpdateEmployee } from 'context/crud/application/use-cases/UpdateEmployee';
+import { FindByFilter } from 'context/crud/application/use-cases/FindByFilter';
+import { SortEmployees } from 'context/crud/application/use-cases/SortEmployees';
+import { PaginateEmployees } from 'context/crud/application/use-cases/PaginateEmployees';
+import { EmployeeController } from 'context/crud/interfaces/http/controlers/EmployeeController';
 
 
 

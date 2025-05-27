@@ -1,6 +1,9 @@
-import { UpdateEmployee } from 'application/use-cases/UpdateEmployee';
-import { InMemoryUserRepo } from 'infrastructure/repositories/inMemoryUserRepo';
-import { Employee } from 'domain/models/Employee';
+import { UpdateEmployee } from 'context/crud/application/use-cases/UpdateEmployee';
+import { InMemoryUserRepo } from 'context/crud/infrastructure/repositories/inMemoryUserRepo';
+import { Employee } from 'context/crud/domain/models/Employee';
+
+
+
 
 describe('UpdateEmployee Use Case', () => {
   it('should update an employee correctly', async () => {

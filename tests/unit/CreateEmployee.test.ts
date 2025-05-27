@@ -1,5 +1,6 @@
-import { CreateEmployee } from 'application/use-cases/CreateEmployee';
-import { InMemoryUserRepo } from 'infrastructure/repositories/inMemoryUserRepo';
+import { CreateEmployee } from 'context/crud/application/use-cases/CreateEmployee';
+import { InMemoryUserRepo } from 'context/crud/infrastructure/repositories/inMemoryUserRepo';
+
 
 //estor recibe dos parametros
 describe('CreateEmployee Use Case', () => {

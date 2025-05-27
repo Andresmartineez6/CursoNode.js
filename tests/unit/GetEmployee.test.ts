@@ -1,6 +1,6 @@
-import { GetEmployee } from 'application/use-cases/GetEmployee';
-import { InMemoryUserRepo } from 'infrastructure/repositories/inMemoryUserRepo';
-import { Employee } from 'domain/models/Employee';
+import { GetEmployee } from 'context/crud/application/use-cases/GetEmployee';
+import { InMemoryUserRepo } from 'context/crud/infrastructure/repositories/inMemoryUserRepo';
+import { Employee } from 'context/crud/domain/models/Employee';
 
 describe('GetEmployee Use Case', () => {
   it('should get an employee by id correctly', async () => {

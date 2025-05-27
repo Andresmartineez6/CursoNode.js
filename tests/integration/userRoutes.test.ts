@@ -3,7 +3,7 @@ import express from 'express';
 import request from 'supertest';
 
 //importas el router
-import { router } from 'interfaces/http/routes/employeeRoutes';
+import { router } from 'context/crud/interfaces/http/routes/employeeRoutes';
 
 const app = express();
 app.use(express.json());
